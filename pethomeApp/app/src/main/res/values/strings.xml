@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">宠物之家</string>
+    <string name="net_location_title">网络定位</string>
+    <string name="gps_location_title">GPS定位</string>
+    <string name="location_latlng">"坐      标："</string>
+    <string name="location_accurancy">"精      度："</string>
+    <string name="location_method">定位方式：</string>
+    <string name="location_time">定位时间：</string>
+    <string name="gpsfollow">追随</string>
+    <string name="gpslocate">定位</string>
+    <string name="gpsrotate">旋转</string>
+    <string name="location_description">位置描述：</string>
+    <string name="location_province">"   省   ：   "</string>
+    <string name="location_city">"   市   ：   "</string>
+    <string name="location_county">"   区   ：   "</string>
+    <string name="location_city_code">城市编码：</string>
+    <string name="location_area_code">区域编码：</string>
+
+    <string name="funny_moment">趣事</string>
+    <string name="knowledge">宝典</string>
+    <string name="nearby">附近</string>
+    <string name="mine">我</string>
+
+    <string name="dog">汪星人</string>
+    <string name="cat">喵星人</string>
+    <string name="little">小星人</string>
+    <string name="sea">水星人</string>
+</resources>
