@@ -25,7 +25,7 @@
                 android:background="@drawable/radio"
                 android:button="@null"
                 android:checked="true"
-                android:drawableTop="@drawable/funny_moment"
+                android:drawableTop="@drawable/favorite"
                 android:text="@string/funny_moment" />
 
             <RadioButton

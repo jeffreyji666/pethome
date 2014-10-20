@@ -11,7 +11,7 @@ import android.view.animation.Animation.AnimationListener;
 import com.umeng.update.UmengUpdateAgent;
 
 import pethome.mobile.pethome.R;
-import pethome.mobile.pethome.ui.HomeActivity;
+import pethome.mobile.pethome.ui.FunnyMomentActivity;
 
 /**
  * Created by wgji on 2014/10/13.
@@ -50,7 +50,7 @@ public class AppStart extends Activity {
      * 跳转到...
      */
     private void redirectTo() {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, FunnyMomentActivity.class);
         startActivity(intent);
         finish();
     }

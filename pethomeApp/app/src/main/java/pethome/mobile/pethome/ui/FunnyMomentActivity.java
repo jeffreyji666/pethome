@@ -1,62 +1,81 @@
 package pethome.mobile.pethome.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import pethome.mobile.pethome.R;
+import pethome.mobile.pethome.app.AppContext;
 
 /**
  * Created by you on 10/19/14.
  */
-public class FunnyMomentActivity extends FragmentActivity {
+public class FunnyMomentActivity extends BaseFragmentActivity {
     private static final String TAG = "FunnyMomentActivity";
 
-    private ViewPager mViewPager;
+    private AppContext ctx;
     private FragmentStatePagerAdapter mAdapter;
     private List<Fragment> mDatas;
 
-    private RadioGroup header;
-    private RadioButton mDog;
-    private RadioButton mCat;
-    private RadioButton mLittle;
-    private RadioButton mSea;
+    private ViewPager mViewPager;
+    private TextView tDog;
+    private TextView tCat;
+    private TextView tOther;
+    private LinearLayout lDog;
+
+    private ImageView mTabline;
+    private int mScreenDivBy3;
+    private int mCurrentPageIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.funny_moment);
+        ctx = (AppContext) getApplication();
 
+        initTabLine();
         initView();
     }
 
 
-    private void initView(){
-        header = (RadioGroup) findViewById(R.id.header);
+    private void initTabLine() {
+        mTabline = (ImageView) findViewById(R.id.tabline);
+        Display display = getWindow().getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+        mScreenDivBy3 = outMetrics.widthPixels / 3;
+        ViewGroup.LayoutParams lp = mTabline.getLayoutParams();
+        lp.width = mScreenDivBy3;
+        mTabline.setLayoutParams(lp);
+    }
+
+    private void initView() {
+        lDog = (LinearLayout) findViewById(R.id.lDog);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        mDog = (RadioButton) findViewById(R.id.mFunnyMoment);
-        mLittle = (RadioButton) findViewById(R.id.mNearby);
-        mCat = (RadioButton) findViewById(R.id.mKnowledge);
-        mSea = (RadioButton) findViewById(R.id.mMine);
+        tDog = (TextView) findViewById(R.id.tDog);
+        tCat = (TextView) findViewById(R.id.tCat);
+        tOther = (TextView) findViewById(R.id.tOther);
 
         mDatas = new ArrayList<Fragment>();
         DogFragment dog = new DogFragment();
         CatFragment cat = new CatFragment();
-        LittleFragment little = new LittleFragment();
-        SeaFragment sea = new SeaFragment();
+        OtherFragment other = new OtherFragment();
         mDatas.add(dog);
         mDatas.add(cat);
-        mDatas.add(little);
-        mDatas.add(sea);
+        mDatas.add(other);
 
         mAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -73,54 +92,33 @@ public class FunnyMomentActivity extends FragmentActivity {
         mViewPager.setAdapter(mAdapter);
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float offset, int offsetPixel) {
-
+            public void onPageScrolled(int position, float positionOffset,
+                                       int positionOffsetPx) {
+                LinearLayout.LayoutParams lp = (android.widget.LinearLayout.LayoutParams) mTabline
+                        .getLayoutParams();
+                lp.leftMargin = (int) (mScreenDivBy3 * positionOffset + position * mScreenDivBy3);
+                mTabline.setLayoutParams(lp);
             }
 
             @Override
-            public void onPageSelected(int i) {
-                switch (i) {
+            public void onPageSelected(int position) {
+                switch (position) {
                     case 0:
-                        mDog.setChecked(true);
+                        tDog.setTextColor(Color.parseColor("#2f75bb"));
                         break;
                     case 1:
-                        mLittle.setChecked(true);
+                        tCat.setTextColor(Color.parseColor("#2f75bb"));
                         break;
                     case 2:
-                        mCat.setChecked(true);
-                        break;
-                    case 3:
-                        mSea.setChecked(true);
+                        tOther.setTextColor(Color.parseColor("#2f75bb"));
                         break;
                 }
+                mCurrentPageIndex = position;
             }
 
             @Override
             public void onPageScrollStateChanged(int i) {
 
-            }
-        });
-
-        //绑定一个匿名监听器
-        header.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup arg0, int arg1) {
-                //获取变更后的选中项的ID
-                int radioButtonId = arg0.getCheckedRadioButtonId();
-                //根据ID获取RadioButton的实例
-                RadioButton rb = (RadioButton) findViewById(radioButtonId);
-                //更新文本内容，以符合选中项
-                int currentIndex = 0;
-                if (rb.getText().equals(getResources().getString(R.string.knowledge))) {
-                    currentIndex = 1;
-                }
-                if (rb.getText().equals(getResources().getString(R.string.nearby))) {
-                    currentIndex = 2;
-                }
-                if (rb.getText().equals(getResources().getString(R.string.mine))) {
-                    currentIndex = 3;
-                }
-                mViewPager.setCurrentItem(currentIndex);
             }
         });
     }

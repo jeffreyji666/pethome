@@ -11,11 +11,11 @@ import pethome.mobile.pethome.R;
 /**
  * Created by you on 10/19/14.
  */
-public class CatFragment extends Fragment {
+public class OtherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View mView = inflater.inflate(R.layout.cat, container, false);
+        View mView = inflater.inflate(R.layout.other, container, false);
         return mView;
     }
 }

@@ -1,9 +1,14 @@
 package pethome.mobile.pethome.ui;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 /**
  * Created by you on 10/19/14.
  */
-public class KnowledgeActivity extends FragmentActivity{
+public class KnowledgeActivity extends BaseFragmentActivity{
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }
