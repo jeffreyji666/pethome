@@ -1,73 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/rl_tab"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/lDog"
-            android:layout_width="3dp"
-            android:orientation="horizontal"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+        <pethome.mobile.pethome.view.SyncHorizontalScrollView
+            android:id="@+id/mHsv"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:fadingEdge="none"
+            android:scrollbars="none">
 
-            <TextView
-                android:id="@+id/tDog"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/rl_nav"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="汪星人"
-                android:textSize="25sp"
-                android:textColor="#008000" />
-        </LinearLayout>
+                android:layout_gravity="top"
+                android:background="#5AB0EB">
 
-        <LinearLayout
-            android:layout_width="3dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+                <RadioGroup
+                    android:id="@+id/rg_nav_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dip"
+                    android:layout_alignParentTop="true"
+                    android:background="#F2F2F2"
+                    android:orientation="horizontal"></RadioGroup>
 
-            <TextView
-                android:id="@+id/tCat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:textSize="25sp"
-                android:text="喵星人" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_nav_indicator"
+                    android:layout_width="1dip"
+                    android:layout_height="5dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="#5AB0EB"
+                    android:contentDescription="@string/nav_desc"
+                    android:scaleType="matrix" />
+            </RelativeLayout>
+        </pethome.mobile.pethome.view.SyncHorizontalScrollView>
 
-        <LinearLayout
-            android:layout_width="3dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+        <ImageView
+            android:id="@+id/iv_nav_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/nav_desc"
+            android:paddingBottom="1dip"
+            android:src="@drawable/iv_navagation_scroll_left"
+            android:visibility="gone"></ImageView>
 
-            <TextView
-                android:id="@+id/tOther"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="其他"
-                android:textColor="#000000"
-                android:textSize="25sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/tabline"
-        android:layout_width="100dp"
-        android:layout_height="3dp"
-        android:background="@drawable/tabline" />
+        <ImageView
+            android:id="@+id/iv_nav_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/nav_desc"
+            android:paddingBottom="1dip"
+            android:src="@drawable/iv_navagation_scroll_right"
+            android:visibility="visible"></ImageView>
+    </RelativeLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:id="@+id/mViewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/rl_tab"
+        android:layout_gravity="center"
+        android:background="#ffffff"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
 
-    <include layout="@layout/footer" />
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <RadioGroup
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/mFunnyMoment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@drawable/favorite"
+                android:text="@string/funny_moment" />
+
+            <RadioButton
+                android:id="@+id/mKnowledge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:drawableTop="@drawable/knowledge"
+                android:text="@string/knowledge" />
+
+            <RadioButton
+                android:id="@+id/mNearby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:drawableTop="@drawable/nearby"
+                android:text="@string/nearby" />
+
+            <RadioButton
+                android:id="@+id/mMine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:drawableTop="@drawable/mine"
+                android:text="@string/mine" />
+        </RadioGroup>
+    </RelativeLayout>
+</RelativeLayout>

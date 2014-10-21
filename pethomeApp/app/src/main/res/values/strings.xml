@@ -21,10 +21,11 @@
     <string name="funny_moment">趣事</string>
     <string name="knowledge">宝典</string>
     <string name="nearby">附近</string>
-    <string name="mine">我</string>
+    <string name="mine">我的</string>
 
     <string name="dog">汪星人</string>
     <string name="cat">喵星人</string>
-    <string name="little">小星人</string>
-    <string name="sea">水星人</string>
+    <string name="other">其他</string>
+    <string name="nav_desc">nav_desc</string>
+
 </resources>
