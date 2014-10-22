@@ -1,7 +1,6 @@
 package pethome.mobile.pethome.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 
 import pethome.mobile.pethome.R;
 
@@ -12,6 +11,6 @@ public class KnowledgeActivity extends BaseFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.knowledge);
+        setContentView(R.layout.knowledge_layout);
     }
 }

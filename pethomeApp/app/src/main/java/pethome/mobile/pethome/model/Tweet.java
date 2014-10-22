@@ -3,12 +3,15 @@ package pethome.mobile.pethome.model;
 /**
  * Created by you on 10/22/14.
  */
-public class Message {
+public class Tweet {
     private Long id = 0L;
     private String avatar;
     private String nickName;
     private String text;
     private String image;
+    private Integer votingUp;
+    private Integer votingDown;
+    private Integer comments;
 
     public Long getId() {
         return id;
@@ -48,5 +51,29 @@ public class Message {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Integer getVotingUp() {
+        return votingUp;
+    }
+
+    public void setVotingUp(Integer votingUp) {
+        this.votingUp = votingUp;
+    }
+
+    public Integer getVotingDown() {
+        return votingDown;
+    }
+
+    public void setVotingDown(Integer votingDown) {
+        this.votingDown = votingDown;
+    }
+
+    public Integer getComments() {
+        return comments;
+    }
+
+    public void setComments(Integer comments) {
+        this.comments = comments;
     }
 }

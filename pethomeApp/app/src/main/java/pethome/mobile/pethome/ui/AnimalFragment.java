@@ -10,20 +10,18 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import pethome.mobile.pethome.R;
-import pethome.mobile.pethome.model.Comment;
-import pethome.mobile.pethome.model.Message;
-import pethome.mobile.pethome.model.MessageModel;
-import pethome.mobile.pethome.view.CommentAdapter;
+import pethome.mobile.pethome.model.Tweet;
+import pethome.mobile.pethome.model.TweetModel;
 import pethome.mobile.pethome.view.LoadListView;
-import pethome.mobile.pethome.view.MessageAdapter;
+import pethome.mobile.pethome.view.TweetAdapter;
 
 /**
  * Created by you on 10/22/14.
  */
 public class AnimalFragment extends Fragment implements LoadListView.ILoadListener {
-    private List<Message> messages;
+    private List<Tweet> tweets;
 
-    MessageAdapter adapter;
+    TweetAdapter adapter;
     LoadListView listview;
     View mView;
 
@@ -31,20 +29,20 @@ public class AnimalFragment extends Fragment implements LoadListView.ILoadListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.message, container, false);
-        messages = MessageModel.getMessages();
-        showListView(mView, messages);
+        tweets = TweetModel.getMessages();
+        showListView(mView, tweets);
         return mView;
 
     }
 
-    private void showListView(View mView, List<Message> messages) {
+    private void showListView(View mView, List<Tweet> tweets) {
         if (adapter == null) {
             listview = (LoadListView) mView.findViewById(R.id.listview);
             listview.setInterface(this);
-            adapter = new MessageAdapter(this.getActivity(), messages);
+            adapter = new TweetAdapter(this.getActivity(), tweets);
             listview.setAdapter(adapter);
         } else {
-            adapter.onDateChange(messages);
+            adapter.onDateChange(tweets);
         }
     }
 
@@ -54,7 +52,7 @@ public class AnimalFragment extends Fragment implements LoadListView.ILoadListen
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                showListView(mView, messages);
+                showListView(mView, tweets);
                 listview.loadComplete();
             }
         }, 2000);

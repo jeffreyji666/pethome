@@ -11,17 +11,12 @@ import android.widget.ImageView;
 public class SyncHorizontalScrollView extends HorizontalScrollView {
 
     private View view;
-    private ImageView leftImage;
-    private ImageView rightImage;
     private int windowWitdh = 0;
     private Activity mContext;
 
-    public void setSomeParam(View view, ImageView leftImage,
-                             ImageView rightImage, Activity context) {
+    public void setSomeParam(View view, Activity context) {
         this.mContext = context;
         this.view = view;
-        this.leftImage = leftImage;
-        this.rightImage = rightImage;
         DisplayMetrics dm = new DisplayMetrics();
         this.mContext.getWindowManager().getDefaultDisplay().getMetrics(dm);
         windowWitdh = dm.widthPixels;
@@ -29,15 +24,12 @@ public class SyncHorizontalScrollView extends HorizontalScrollView {
 
     public SyncHorizontalScrollView(Context context) {
         super(context);
-        // TODO Auto-generated constructor stub
     }
 
     public SyncHorizontalScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        // TODO Auto-generated constructor stub
     }
 
-    // ÏÔÊ¾ºÍÒþ²Ø×óÓÒÁ½±ßµÄ¼ýÍ·
 //	public void showAndHideArrow() {
 //		if (!mContext.isFinishing() && view != null) {
 //			this.measure(0, 0);
@@ -61,23 +53,23 @@ public class SyncHorizontalScrollView extends HorizontalScrollView {
 
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        if (!mContext.isFinishing() && view != null && rightImage != null
-                && leftImage != null) {
-            if (view.getWidth() <= windowWitdh) {
-                leftImage.setVisibility(View.GONE);
-                rightImage.setVisibility(View.GONE);
-            } else {
-                if (l == 0) {
-                    leftImage.setVisibility(View.GONE);
-                    rightImage.setVisibility(View.VISIBLE);
-                } else if (view.getWidth() - l == windowWitdh) {
-                    leftImage.setVisibility(View.VISIBLE);
-                    rightImage.setVisibility(View.GONE);
-                } else {
-                    leftImage.setVisibility(View.VISIBLE);
-                    rightImage.setVisibility(View.VISIBLE);
-                }
-            }
-        }
+//        if (!mContext.isFinishing() && view != null && rightImage != null
+//                && leftImage != null) {
+//            if (view.getWidth() <= windowWitdh) {
+//                leftImage.setVisibility(View.GONE);
+//                rightImage.setVisibility(View.GONE);
+//            } else {
+//                if (l == 0) {
+//                    leftImage.setVisibility(View.GONE);
+//                    rightImage.setVisibility(View.VISIBLE);
+//                } else if (view.getWidth() - l == windowWitdh) {
+//                    leftImage.setVisibility(View.VISIBLE);
+//                    rightImage.setVisibility(View.GONE);
+//                } else {
+//                    leftImage.setVisibility(View.VISIBLE);
+//                    rightImage.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        }
     }
 }

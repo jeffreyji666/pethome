@@ -15,7 +15,7 @@ public class CatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View mView = inflater.inflate(R.layout.cat, container, false);
+        View mView = inflater.inflate(R.layout.cat_layout, container, false);
         return mView;
     }
 }

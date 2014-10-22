@@ -3,7 +3,6 @@ package pethome.mobile.pethome.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
@@ -12,14 +11,17 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pethome.mobile.pethome.R;
 import pethome.mobile.pethome.app.AppContext;
-import pethome.mobile.pethome.view.SyncHorizontalScrollView;
 
 /**
  * Created by you on 10/19/14.
@@ -30,18 +32,17 @@ public class FunnyMomentActivity extends BaseFragmentActivity {
     private AppContext ctx;
 
     private RelativeLayout rlNav;
-    private SyncHorizontalScrollView scrollView;
+    private HorizontalScrollView scrollView;
     private RadioGroup rgNavContent;
     private ImageView ivNavIndicator;
-    private ImageView ivNavLeft;
-    private ImageView ivNavRight;
     private ViewPager mViewPager;
     private RadioGroup footer;
     private LayoutInflater mInflater;
-    private TabFragmentPagerAdapter mAdapter;
+    private FragmentStatePagerAdapter mAdapter;
+    private List<Fragment> mDatas;
 
     private int currentIndicatorLeft = 0;
-    public static String[] tabTitle = {"汪星人", "喵星人", "其它"};
+    public String[] tabTitle = {"汪星人", "喵星人", "其它"};
     private int indicatorWidth;
 
 
@@ -129,15 +130,32 @@ public class FunnyMomentActivity extends BaseFragmentActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         indicatorWidth = dm.widthPixels / tabTitle.length;
-        ViewGroup.LayoutParams cursor_Params = ivNavIndicator.getLayoutParams();
-        cursor_Params.width = indicatorWidth;
-        ivNavIndicator.setLayoutParams(cursor_Params);
-        scrollView.setSomeParam(rlNav, ivNavLeft, ivNavRight, this);
+        ViewGroup.LayoutParams cursorParams = ivNavIndicator.getLayoutParams();
+        cursorParams.width = indicatorWidth;
+        ivNavIndicator.setLayoutParams(cursorParams);
 
         mInflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
         initNavigationHSV();
 
-        mAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager());
+        mDatas = new ArrayList<Fragment>();
+        DogFragment dog = new DogFragment();
+        CatFragment cat = new CatFragment();
+        OtherFragment other = new OtherFragment();
+        mDatas.add(dog);
+        mDatas.add(cat);
+        mDatas.add(other);
+
+        mAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int i) {
+                return mDatas.get(i);
+            }
+
+            @Override
+            public int getCount() {
+                return mDatas.size();
+            }
+        };
         mViewPager.setAdapter(mAdapter);
     }
 
@@ -152,50 +170,15 @@ public class FunnyMomentActivity extends BaseFragmentActivity {
 
             rgNavContent.addView(rb);
         }
-
     }
 
     private void findViewById() {
         rlNav = (RelativeLayout) findViewById(R.id.rl_nav);
-        scrollView = (SyncHorizontalScrollView) findViewById(R.id.mHsv);
+        scrollView = (HorizontalScrollView) findViewById(R.id.scrollView);
         rgNavContent = (RadioGroup) findViewById(R.id.rg_nav_content);
         ivNavIndicator = (ImageView) findViewById(R.id.iv_nav_indicator);
-        ivNavLeft = (ImageView) findViewById(R.id.iv_nav_left);
-        ivNavRight = (ImageView) findViewById(R.id.iv_nav_right);
 
         mViewPager = (ViewPager) findViewById(R.id.mViewPager);
         footer = (RadioGroup) findViewById(R.id.footer);
-
-    }
-
-    public static class TabFragmentPagerAdapter extends FragmentStatePagerAdapter {
-        public TabFragmentPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int i) {
-            Fragment ft = null;
-            switch (i) {
-                case 0:
-                    ft = new DogFragment();
-                    break;
-                case 1:
-                    ft = new CatFragment();
-                    break;
-                case 2:
-                    ft = new OtherFragment();
-                    break;
-                default:
-                    ft = new DogFragment();
-                    break;
-            }
-            return ft;
-        }
-
-        @Override
-        public int getCount() {
-            return tabTitle.length;
-        }
     }
 }

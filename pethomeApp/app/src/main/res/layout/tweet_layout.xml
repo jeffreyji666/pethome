@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <pethome.mobile.pethome.view.LoadListView
-        android:id="@+id/listview"
+        android:id="@+id/tweets"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"

@@ -11,6 +11,6 @@ public class NearbyActivity extends BaseFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nearby);
+        setContentView(R.layout.nearby_layout);
     }
 }
