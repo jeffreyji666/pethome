@@ -1,27 +1,18 @@
-pethomeApp/pethomeApp.iml
 pethomeApp/.gradle
-pethomeApp/gradle/
 pethomeApp/gradlew
 pethomeApp/gradlew.bat
-pethomeApp/settings.gradle
-pethomeApp/gradle.properties
 pethomeApp/local.properties
-pethomeApp/.idea/
 pethomeApp/build/
 
-pethomeApp/badgeView/badgeView.iml
 pethomeApp/badgeView/build/
 pethomeApp/badgeView/bin/
 
-pethomeApp/app/app.iml
 pethomeApp/app/build/
 pethomeApp/app/bin/
 
-pethomeApp/wishlist/wishlist.iml
 pethomeApp/wishlist/build/
 pethomeApp/wishlist/bin/
 
-pethomeApp/actionbarsherlock/actionbarsherlock.iml
 pethomeApp/actionbarsherlock/build/
 pethomeApp/actionbarsherlock/bin/
 pethomeApp/actionbarsherlock/target/

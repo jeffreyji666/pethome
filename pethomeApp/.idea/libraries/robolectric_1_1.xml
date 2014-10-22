@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="robolectric-1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pivotallabs/robolectric/1.1/522af17ec3f203240ae07682c877eabe5c5beb12/robolectric-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pivotallabs/robolectric/1.1/358b88af07bb9057d5d23d9eaad130a171b6859c/robolectric-1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
