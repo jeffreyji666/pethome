@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import pethome.mobile.pethome.R;
