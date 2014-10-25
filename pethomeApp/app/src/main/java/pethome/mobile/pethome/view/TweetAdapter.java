@@ -53,7 +53,7 @@ public class TweetAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.message, null);
+            convertView = inflater.inflate(R.layout.dog_item, null);
             holder.avatar = (ImageView) convertView.findViewById(R.id.avatar);
             holder.nickName = (TextView) convertView.findViewById(R.id.nickName);
             holder.text = (TextView) convertView.findViewById(R.id.text);

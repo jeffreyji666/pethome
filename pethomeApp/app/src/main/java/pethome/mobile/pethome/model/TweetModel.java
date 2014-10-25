@@ -16,6 +16,9 @@ public class TweetModel {
             tweet.setNickName("test" + i);
             tweet.setText("messagegfdsfddddddddddddd基dddddddddddddddddddddd夺城城城霜" + i);
             tweet.setImage("http://img4.imgtn.bdimg.com/it/u=276752150,2278137470&fm=21&gp=0.jpg");
+            tweet.setVotingUp(i);
+            tweet.setVotingDown(i);
+            tweet.setComments(i);
             tweets.add(tweet);
         }
         return tweets;

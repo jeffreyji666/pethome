@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_below="@+id/rl_tab"
+    android:layout_alignBottom="@+id/footer_bar">
 
     <pethome.mobile.pethome.view.LoadListView
         android:id="@+id/tweets"
@@ -10,4 +12,4 @@
         android:background="@color/white"
         android:cacheColorHint="#00000000"
         android:dividerHeight="5dip" />
-</LinearLayout>
+</RelativeLayout>
