@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_below="@+id/rl_tab"
-    android:layout_alignBottom="@+id/footer_bar">
+    android:layout_marginTop="50dp"
+    android:layout_marginBottom="50dp"
+    android:layout_centerVertical="true">
 
     <pethome.mobile.pethome.view.LoadListView
         android:id="@+id/tweets"
